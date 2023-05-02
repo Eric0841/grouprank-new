@@ -1,0 +1,21 @@
+const noblox = require('noblox.js');
+const groupid = "12475608";
+noblox.setCookie("_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_EA5E7797F300604A1FD3006B793ECBFBEDFFF028F4AF333DA2F92B213FE4B5FD6F0439F83BDCE8667ADC8324DED5F5477966FA82A5F6E2560DFF9F679675CB26451CBD9E5E804F20990B9BABBE3E2973155644D427A42E842D2694A3A84860A91FE9C79A50D54D024560D35B1A0712F640BE061B082BF2292D9FE354125E6AB2ACCEDFBABB2617FE08FCF16529C8B0AA0EFCDE001A257F1E990D609C9EE4149EBFEB774E709A022895A4142854886F9F0F5632CD96B7FE0682947F375F01D34B715A541AA5F088868E4955260327A089367FC99C3C2B43AE521CC1D27843E69D430F4236431A0C5B4AE22261FAD8A8B74C8692C7F6C8AAB508A1AEAD57F994192A0A2E1B7BBF6C7566A743BA2F8BE2482EF95D6F87A5010848FD12F952F965F469BCBA3D5400485B5A3529718C937BAD884BFFFE6D0D40CE9A2CA432370313D6D2E778A9E3AA7852C7272D2A7F9E40C72F7AE6A691AB84D5FBEB469CF4BDF2AA9CF54FDFD9C92C792AEF49A955D3B63E60BC0EA26C8D4044A058F27EC4E843FA08DED35C");
+
+
+
+exports.PromotedRank = async function(username) {
+    const userid = await noblox.getIdFromUsername(username).catch(function(error){return false;});
+    const result = await noblox.changeRank(groupid,userid,1).catch(function(error){return false;});
+    return {newrole:result.newRole.name,oldrole:result.oldRole.name}
+    
+}
+
+exports.DemotedRank = async function(username) {
+    const userid = await noblox.getIdFromUsername(username).catch(function(error){return false;});
+    const result = await noblox.changeRank(groupid,userid,-1).catch(function(error){return false;});
+    return {newrole:result.newRole.name,oldrole:result.oldRole.name}
+
+        
+
+}
