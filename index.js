@@ -1,4 +1,6 @@
 const {Client, Intents} = require('discord.js');
+require("dotenv").config();
+const ver = process.env.TOKEN;
 const client = new Client({intents:[Intents.FLAGS.GUILDS,Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_MESSAGES]});
 const fs = require('fs');
 const { token } = require('./config.json');
@@ -11,4 +13,4 @@ for(const file of eventFiles){
         client.on(event.name,(args)=>event.execute(args))
     }
 }
-client.login(token)
+client.login(ver)
